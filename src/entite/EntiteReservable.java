@@ -1,8 +1,8 @@
 package entite;
 
-public class EntiteReservable {
+public abstract class EntiteReservable<F extends Formulaire> {
 
-	private CalendrierAnnuel calendrier_personnel;
+	protected CalendrierAnnuel calendrier_personnel;
 	private int numero;
 
 	public EntiteReservable(int num) {
@@ -22,8 +22,8 @@ public class EntiteReservable {
 		return calendrier_personnel.estLibre(form.getJour(), form.getMois());
 	}
 
-	public void compatbile(Formulaire form) {
+	public abstract boolean compatible(F form);
 
-	}
+	public abstract Reservation reserver(F form);
 
 }
